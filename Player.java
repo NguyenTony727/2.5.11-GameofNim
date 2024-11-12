@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /*
  * Activity 2.5.11
  *
@@ -6,9 +7,28 @@
 public class Player {
     /* attributes */
     String name;
-
+    int score;
     /* constructor */
-    public Player(){
-        
+    public Player(String name) {
+        this.name = name;
+        this.score = 0;
+    }
+
+    /* accessors */
+    public String getName() {
+        return name;
+    }
+
+    public int pickPiece(int pileSize) {
+        Scanner scanner = new Scanner(System.in);
+        int chosenPiece = 0; 
+
+        // Ensure the player selects a valid number of pieces
+        while (chosenPiece < 1 || chosenPiece > pileSize / 2) {
+            System.out.print("Choose how many pieces to take (1 to " + pileSize / 2 + "): ");
+            chosenPiece = scanner.nextInt();
+        }
+        scanner.close();
+        return chosenPiece;
     }
 }
