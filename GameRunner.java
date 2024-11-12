@@ -25,12 +25,6 @@ public class GameRunner {
         }
 
         game.announceWinner();
-
-        // Ask if players want to play again
-        if (game.playAgain()) {
-            main(args);  
-        } else {
-            scanner.close();
-        }
+        scanner.close();
     }
 }

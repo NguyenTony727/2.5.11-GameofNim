@@ -39,7 +39,7 @@ class Game {
         if (pileSize == 0) {
             checkGameOver();
         }
-        
+
         checkGameOver();
 
         // Switch to the other player.
@@ -55,7 +55,7 @@ class Game {
             // The current player loses because they took the last piece
             Player loser = players[currentPlayerIndex];
             System.out.println("Game over! " + loser.getName() + " loses!");
-            players[1 - currentPlayerIndex].score++;  // The other player wins
+            players[1-currentPlayerIndex].score++;  // The other player wins
             isGameOver = true;
         }
     }
