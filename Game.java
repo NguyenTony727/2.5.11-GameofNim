@@ -18,6 +18,10 @@ class Game {
         this.isGameOver = false;
         this.rand = new Random();
     }
+    
+    public void setPileSize(int pileSize) {
+        this.pileSize = pileSize;
+    }
 
     public void startGame() {
         randomizePile();
