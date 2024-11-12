@@ -23,12 +23,16 @@ public class Player {
         Scanner scanner = new Scanner(System.in);
         int chosenPiece = 0; 
 
+        if (pileSize == 1) {
+            System.out.println("There is only 1 piece left. You must take it.");
+            return 1; // The player must take the last piece
+        }
+        
         // Ensure the player selects a valid number of pieces
         while (chosenPiece < 1 || chosenPiece > pileSize / 2) {
             System.out.print("Choose how many pieces to take (1 to " + pileSize / 2 + "): ");
             chosenPiece = scanner.nextInt();
         }
-        scanner.close();
         return chosenPiece;
     }
 }

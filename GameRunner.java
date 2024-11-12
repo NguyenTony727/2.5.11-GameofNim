@@ -1,11 +1,36 @@
-/**
- * Project 2.5.11
+import java.util.Scanner;
+/*
+ * Activity 2.5.11
  *
- * GameRunner Class for the Game of Nim 
-*/
+ * Manages the game flow, including starting the game, taking turns, checking if the game is over, and announcing the winner.
+ */
 public class GameRunner {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Game of Nim!");
-        Game game = new Game();
+        // Create players
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Player 1's name: ");
+        String player1Name = scanner.nextLine();
+        System.out.print("Enter Player 2's name: ");
+        String player2Name = scanner.nextLine();
+
+        Player player1 = new Player(player1Name);
+        Player player2 = new Player(player2Name);
+
+        Game game = new Game(player1, player2);
+
+        game.startGame();
+
+        while (!game.isGameOver()) {
+            game.takeTurn();
+        }
+
+        game.announceWinner();
+
+        // Ask if players want to play again
+        if (game.playAgain()) {
+            main(args);  
+        } else {
+            scanner.close();
+        }
     }
 }
