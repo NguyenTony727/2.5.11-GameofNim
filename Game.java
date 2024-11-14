@@ -19,12 +19,13 @@ class Game {
         this.rand = new Random();
     }
     
-    public void setPileSize(int pileSize) {
-        this.pileSize = pileSize;
+    public static int generateRandomPileSize() {
+        Random rand = new Random();
+        return rand.nextInt(41) + 10; // Random between 10 and 50
     }
 
     public void startGame() {
-        randomizePile();
+        pileSize = generateRandomPileSize();
         currentPlayerIndex = rand.nextInt(2); // Randomly select the first player
         System.out.println("Game started! There are " + pileSize + " pieces in the pile.");
         System.out.println(players[currentPlayerIndex].getName() + " will go first.");
@@ -50,16 +51,12 @@ class Game {
         currentPlayerIndex = 1 - currentPlayerIndex;
     }
 
-    private void randomizePile() {
-        pileSize = rand.nextInt(41) + 10; // Random between 10 and 50
-    }
-
     public void checkGameOver() {
         if (pileSize <= 0) {
             // The current player loses because they took the last piece
             Player loser = players[currentPlayerIndex];
             System.out.println("Game over! " + loser.getName() + " loses!");
-            players[1-currentPlayerIndex].score++;  // The other player wins
+            players[currentPlayerIndex].score++;  // The other player wins
             isGameOver = true;
         }
     }
